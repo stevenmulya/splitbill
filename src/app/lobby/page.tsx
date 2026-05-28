@@ -34,7 +34,7 @@ export default function LobbyPage() {
   const handleNext = () => {
     if (users.length === 0) return;
     sessionStorage.setItem('snapsplit_users', JSON.stringify(users));
-    router.push('/upload');
+    router.push('/assign');
   };
 
   return (

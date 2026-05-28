@@ -9,6 +9,7 @@ export default function UploadPage() {
   const [file, setFile] = useState<File | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
 
@@ -70,12 +71,7 @@ export default function UploadPage() {
       router.push('/verify'); 
     } catch (error: any) {
       console.error('API Error:', error);
-      alert(`Failed to read receipt automatically.\n\nError Detail: ${error?.message || 'Unknown Error'}\n\nPlease check the console for details, or add items manually.`);
-      // Still go to verify page so they can manually add if it fails
-      sessionStorage.setItem('snapsplit_items', '[]');
-      sessionStorage.setItem('snapsplit_tax', '0');
-      sessionStorage.setItem('snapsplit_image', previewUrl);
-      router.push('/verify');
+      setErrorMsg(error?.message || 'Unknown Error');
     } finally {
       setIsAnalyzing(false);
     }
@@ -98,7 +94,58 @@ export default function UploadPage() {
           className={`${styles.uploadArea} ${previewUrl ? styles.hasImage : ''}`}
           onClick={() => !previewUrl && !isAnalyzing && fileInputRef.current?.click()}
         >
-          {isAnalyzing && (
+          {errorMsg ? (
+            <div className={styles.loadingOverlay} style={{ padding: '2rem', textAlign: 'center', zIndex: 20, background: 'var(--surface-color)' }}>
+              <h3 style={{ color: '#ef4444', marginBottom: '1rem', fontSize: '1.2rem', fontWeight: 700 }}>Scan Failed</h3>
+              <div style={{ 
+                background: 'rgba(0,0,0,0.02)', 
+                border: '1px solid var(--border-color)',
+                padding: '1rem', 
+                borderRadius: '8px', 
+                marginBottom: '1.5rem', 
+                wordBreak: 'break-word', 
+                fontSize: '0.9rem', 
+                color: 'var(--text-secondary)',
+                textAlign: 'left'
+              }}>
+                <strong>Error Details:</strong><br/>
+                {errorMsg}
+              </div>
+              <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', justifyContent: 'center' }}>
+                <button 
+                  onClick={(e) => { 
+                    e.stopPropagation(); 
+                    navigator.clipboard.writeText(errorMsg); 
+                    alert('Error message copied to clipboard!'); 
+                  }} 
+                  style={{ padding: '10px 16px', background: 'var(--bg-color)', border: '1px solid var(--border-color)', borderRadius: '99px', fontSize: '0.9rem', cursor: 'pointer', fontWeight: 600, color: 'var(--text-primary)' }}
+                >
+                  Copy Error
+                </button>
+                <button 
+                  onClick={(e) => { 
+                    e.stopPropagation(); 
+                    setErrorMsg(null); 
+                  }} 
+                  style={{ padding: '10px 16px', background: 'var(--bg-color)', border: '1px solid var(--border-color)', borderRadius: '99px', fontSize: '0.9rem', cursor: 'pointer', fontWeight: 600, color: 'var(--text-primary)' }}
+                >
+                  Try Again
+                </button>
+                <button 
+                  onClick={(e) => { 
+                    e.stopPropagation(); 
+                    sessionStorage.setItem('snapsplit_items', '[]');
+                    sessionStorage.setItem('snapsplit_tax', '0');
+                    sessionStorage.setItem('snapsplit_image', previewUrl || '');
+                    router.push('/verify');
+                  }} 
+                  style={{ padding: '10px 16px', background: 'var(--primary-accent)', color: 'white', border: 'none', borderRadius: '99px', fontSize: '0.9rem', cursor: 'pointer', fontWeight: 600 }}
+                >
+                  Add Manually
+                </button>
+              </div>
+            </div>
+          ) : isAnalyzing && (
             <div className={styles.loadingOverlay}>
               <Loader2 className={styles.bigSpinner} size={48} />
               <h2>Analyzing Receipt</h2>

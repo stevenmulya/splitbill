@@ -46,10 +46,32 @@ export default function Error({
         textAlign: 'left', 
         color: '#ef4444', 
         fontSize: '0.95rem',
-        boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.05)'
+        boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.05)',
+        position: 'relative'
       }}>
         <strong style={{ display: 'block', marginBottom: '0.5rem', color: 'var(--text-primary)' }}>Error Details:</strong> 
         {error.message || 'Unknown Application Error'}
+        
+        <button 
+          onClick={() => {
+            navigator.clipboard.writeText(error.message || 'Unknown Application Error');
+            alert('Error message copied to clipboard!');
+          }}
+          style={{
+            position: 'absolute',
+            top: '12px',
+            right: '12px',
+            background: 'var(--bg-color)',
+            border: '1px solid var(--border-color)',
+            borderRadius: '6px',
+            padding: '4px 8px',
+            fontSize: '0.8rem',
+            cursor: 'pointer',
+            color: 'var(--text-secondary)'
+          }}
+        >
+          Copy
+        </button>
       </div>
 
       <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', justifyContent: 'center' }}>

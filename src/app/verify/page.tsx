@@ -42,7 +42,7 @@ export default function VerifyPage() {
   const handleConfirm = () => {
     sessionStorage.setItem('snapsplit_items', JSON.stringify(items));
     sessionStorage.setItem('snapsplit_tax', taxAndService.toString());
-    router.push('/assign');
+    router.push('/lobby');
   };
 
   const handleTaxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
