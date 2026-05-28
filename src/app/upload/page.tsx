@@ -110,7 +110,6 @@ export default function UploadPage() {
             ref={fileInputRef} 
             onChange={handleFileChange} 
             accept="image/*"
-            capture="environment"
             className={styles.hiddenInput}
             disabled={isAnalyzing}
           />

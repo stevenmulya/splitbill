@@ -29,10 +29,6 @@ export default function Home() {
         </div>
 
       </div>
-      
-      <footer className={styles.footerSignature}>
-        Developed by stevenmulya@gmail.com
-      </footer>
     </main>
   );
 }
