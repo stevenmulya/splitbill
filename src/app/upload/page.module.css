@@ -1,0 +1,234 @@
+.main {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 2rem 1.5rem;
+  background-color: var(--bg-color);
+}
+
+.container {
+  max-width: 430px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding-bottom: 6rem;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.backButton {
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 1rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  align-self: flex-start;
+  transition: color 0.2s;
+  border: none;
+  cursor: pointer;
+}
+
+.backButton:hover {
+  color: var(--text-primary);
+}
+
+.titleWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+.subtitle {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+}
+
+.uploadArea {
+  flex: 1;
+  background-color: var(--surface-color);
+  border: 2px dashed var(--border-color);
+  border-radius: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  min-height: 300px;
+  transition: all 0.2s;
+  overflow: hidden;
+  position: relative;
+}
+
+.uploadArea:hover:not(.hasImage) {
+  border-color: var(--primary-accent);
+  background-color: rgba(15, 23, 42, 0.02);
+}
+
+.uploadArea.hasImage {
+  border: none;
+  background-color: transparent;
+}
+
+.loadingOverlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+  border-radius: 32px;
+  animation: fadeIn 0.3s ease;
+  text-align: center;
+  gap: 1rem;
+}
+
+.loadingOverlay h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0;
+}
+
+.loadingOverlay p {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+}
+
+.bigSpinner {
+  color: var(--primary-accent);
+  animation: spin 1.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.hiddenInput {
+  display: none;
+}
+
+.uploadPrompt {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.5rem;
+}
+
+.iconWrapper {
+  background: var(--bg-color);
+  padding: 1rem;
+  border-radius: 20px;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+}
+
+.uploadPrompt h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.uploadPrompt p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.previewContainer {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.previewImage {
+  width: 100%;
+  height: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 32px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.reselectButton {
+  background-color: var(--surface-color);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  padding: 1rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: background-color 0.2s;
+  cursor: pointer;
+}
+
+.reselectButton:hover {
+  background-color: var(--bg-color);
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.5rem;
+  background: linear-gradient(to top, var(--bg-color) 80%, transparent);
+  display: flex;
+  justify-content: center;
+}
+
+.analyzeButton {
+  max-width: 430px;
+  width: 100%;
+  background-color: var(--primary-accent);
+  color: white;
+  padding: 1.25rem;
+  border-radius: 9999px;
+  font-weight: 700;
+  font-size: 1.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0 10px 20px -5px rgba(15, 23, 42, 0.3);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  border: none;
+  cursor: pointer;
+}
+
+.analyzeButton:hover:not(.disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 25px -5px rgba(15, 23, 42, 0.4);
+}
+
+.analyzeButton:active:not(.disabled) {
+  transform: scale(0.96);
+}
+
+.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

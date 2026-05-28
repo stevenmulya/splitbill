@@ -1,0 +1,215 @@
+.main {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1rem;
+}
+
+.container {
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.backButton {
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  align-self: flex-start;
+  transition: color 0.2s;
+}
+
+.backButton:hover {
+  color: var(--text-primary);
+}
+
+.title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.listContainer {
+  background: var(--surface-color);
+  border-radius: 16px;
+  padding: 1.5rem;
+  border: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 1rem;
+  border-bottom: 1px dashed var(--border-color);
+}
+
+.item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.itemName {
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.itemPrice {
+  color: var(--text-secondary);
+}
+
+.taxSection {
+  background: var(--surface-color);
+  border-radius: 16px;
+  padding: 1.5rem;
+  border: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.taxLabel {
+  font-weight: 500;
+}
+
+.taxInputWrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--bg-color);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+}
+
+.taxInput {
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
+  font-size: 1rem;
+  width: 80px;
+  text-align: right;
+}
+
+.taxInput:focus {
+  outline: none;
+}
+
+.footer {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.restartButton {
+  flex: 1;
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1px solid var(--border-color);
+  padding: 1rem;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.2s;
+}
+
+.restartButton:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-primary);
+}
+
+.confirmButton {
+  flex: 1;
+  background: var(--primary-accent);
+  color: white;
+  padding: 1rem;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: background-color 0.2s;
+}
+
+.confirmButton:hover {
+  background: var(--primary-accent-hover);
+}
+
+.itemEdit {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  width: 100%;
+}
+
+.editInput {
+  background: var(--bg-color);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  padding: 0.5rem;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 0.95rem;
+}
+
+.editInput:focus {
+  outline: 1px solid var(--primary-accent);
+  border-color: var(--primary-accent);
+}
+
+.nameInput {
+  flex: 1;
+}
+
+.priceInput {
+  width: 90px;
+  text-align: right;
+}
+
+.deleteButton {
+  background: transparent;
+  color: var(--color-red);
+  font-size: 1.2rem;
+  padding: 0.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.deleteButton:hover {
+  background: rgba(239, 68, 68, 0.1);
+}
+
+.addButton {
+  background: transparent;
+  color: var(--primary-accent);
+  border: 1px dashed var(--primary-accent);
+  padding: 0.75rem;
+  border-radius: 8px;
+  width: 100%;
+  font-weight: 600;
+  margin-top: 0.5rem;
+  transition: background 0.2s;
+  cursor: pointer;
+}
+
+.addButton:hover {
+  background: rgba(59, 130, 246, 0.1);
+}

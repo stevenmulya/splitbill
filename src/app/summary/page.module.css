@@ -1,0 +1,226 @@
+.main {
+  min-height: 100vh;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container {
+  max-width: 500px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.header {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--primary-accent);
+}
+
+.subtitle {
+  color: var(--text-secondary);
+}
+
+.receiptContainer {
+  background-color: var(--surface-color);
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}
+
+.userSection {
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.userSection:last-child {
+  border-bottom: none;
+}
+
+.userHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.userHeader h2 {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.itemList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.itemList li {
+  display: flex;
+  justify-content: space-between;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.sharedBadge {
+  background-color: rgba(255,255,255,0.1);
+  font-size: 0.7rem;
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-left: 8px;
+}
+
+.mathBreakdown {
+  border-top: 1px dashed var(--border-color);
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.mathBreakdown div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.unassignedWarning {
+  padding: 1rem 1.5rem;
+  background-color: rgba(239, 68, 68, 0.1);
+  color: var(--color-red);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.footer {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.primaryButton {
+  width: 100%;
+  background-color: var(--primary-accent);
+  color: white;
+  padding: 1.25rem;
+  border-radius: 9999px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.2rem;
+  box-shadow: 0 10px 20px -5px rgba(15, 23, 42, 0.3);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  border: none;
+  cursor: pointer;
+}
+
+.primaryButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 25px -5px rgba(15, 23, 42, 0.4);
+}
+
+.primaryButton:active {
+  transform: scale(0.96);
+}
+
+.secondaryButton {
+  width: 100%;
+  background-color: var(--surface-color);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  padding: 1rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: background-color 0.2s;
+  cursor: pointer;
+}
+
+.secondaryButton:hover {
+  background-color: var(--bg-color);
+}
+
+.receiptImageContainer {
+  width: 100%;
+  max-height: 200px;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--surface-color);
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.receiptImageContainer:hover {
+  transform: scale(0.98);
+}
+
+.receiptImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.imageOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.85);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  cursor: zoom-out;
+}
+
+.expandedImage {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 16px;
+}
+
+.itemDetails {
+  display: flex;
+  flex-direction: column;
+}
+
+.sharedNames {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  font-style: italic;
+  margin-top: 2px;
+}
+
+.grandTotalSection {
+  background-color: var(--surface-color);
+  border-radius: 16px;
+  padding: 1.5rem;
+  border: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-top: -1rem;
+}
