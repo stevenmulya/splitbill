@@ -63,8 +63,8 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json(parsedData);
 
-  } catch (error) {
+  } catch (error: any) {
     console.error("Gemini API Error:", error);
-    return NextResponse.json({ error: 'Failed to process receipt' }, { status: 500 });
+    return NextResponse.json({ error: error?.message || 'Failed to process receipt' }, { status: 500 });
   }
 }

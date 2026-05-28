@@ -45,13 +45,14 @@ export default function UploadPage() {
       });
 
       if (!response.ok) {
-        throw new Error('API responded with status ' + response.status);
+        const errorData = await response.json().catch(() => null);
+        throw new Error(errorData?.error || 'API responded with status ' + response.status);
       }
 
       const data = await response.json();
       
       if (!data.items || !Array.isArray(data.items)) {
-        throw new Error('Invalid response format');
+        throw new Error('Invalid response format: ' + JSON.stringify(data));
       }
 
       // Format the items
@@ -67,9 +68,9 @@ export default function UploadPage() {
       sessionStorage.setItem('snapsplit_tax', (data.taxAndService || 0).toString());
       sessionStorage.setItem('snapsplit_image', previewUrl);
       router.push('/verify'); 
-    } catch (error) {
+    } catch (error: any) {
       console.error('API Error:', error);
-      alert('Failed to read receipt automatically. Please add items manually on the next page.');
+      alert(`Failed to read receipt automatically.\n\nError Detail: ${error?.message || 'Unknown Error'}\n\nPlease check the console for details, or add items manually.`);
       // Still go to verify page so they can manually add if it fails
       sessionStorage.setItem('snapsplit_items', '[]');
       sessionStorage.setItem('snapsplit_tax', '0');
