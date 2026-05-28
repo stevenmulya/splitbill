@@ -71,7 +71,20 @@ export default function UploadPage() {
       router.push('/verify'); 
     } catch (error: any) {
       console.error('API Error:', error);
-      setErrorMsg(error?.message || 'Unknown Error');
+      
+      const rawError = error?.message || 'Unknown Error';
+      let friendlyError = rawError;
+
+      // Make Gemini API errors pretty and user-friendly
+      if (rawError.includes('429 Too Many Requests') || rawError.includes('Quota exceeded')) {
+        friendlyError = "The AI is currently overloaded or has reached its free limit. Please wait 15-30 seconds and try again! ⏳";
+      } else if (rawError.includes('403 Forbidden') || rawError.includes('leaked')) {
+        friendlyError = "Your Gemini API Key was automatically disabled by Google for security reasons. Please generate a new key and update your settings. 🔒";
+      } else if (rawError.includes('API key not valid') || rawError.includes('API key not configured')) {
+        friendlyError = "Your Gemini API Key is missing or invalid. Please check your configuration. 🔑";
+      }
+
+      setErrorMsg(friendlyError);
     } finally {
       setIsAnalyzing(false);
     }
